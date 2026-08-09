@@ -15,6 +15,7 @@ class CustomTextFormField extends StatelessWidget {
   final InputBorder? enabledBorder;
   final InputBorder? disabledBorder;
   final void Function()? showtext;
+  final Widget? suffix;
   final String? Function(String?)? validator;
   final void Function()? onTap;
 
@@ -24,6 +25,7 @@ class CustomTextFormField extends StatelessWidget {
     this.textlabel,
     required this.hinttext,
     this.isCollapsed,
+    this.suffix,
     this.filled,
     required this.prefixicon,
     this.colorfill,
@@ -48,6 +50,7 @@ class CustomTextFormField extends StatelessWidget {
         hintStyle: TextStyle(color: Colors.black),
         isCollapsed: isCollapsed ?? false,
         prefixIcon: GestureDetector(onTap: showtext, child: prefixicon),
+        suffixIcon: suffix,
         filled: filled ?? true,
         fillColor: colorfill ?? Colors.white,
         focusedBorder:

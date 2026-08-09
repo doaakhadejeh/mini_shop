@@ -15,10 +15,10 @@ class ButtonOtp extends StatelessWidget {
     return CustomButton(
       onPressed: () {
         if (cubit.otpCode.length == 6) {
-          // cubit.verifyOtp(
-          //   verificationId: cubit.verificationId,
-          //   userOtpCode: cubit.otpCode,
-          // );
+          cubit.verifyOtp(
+            verificationId: cubit.verificationId,
+            userOtpCode: cubit.otpCode,
+          );
           context.go(ConstRouter.home);
         } else {
           ScaffoldMessenger.of(context).showSnackBar(

@@ -16,9 +16,9 @@ class FieldLoginPage extends StatefulWidget {
 class _FieldLoginPageState extends State<FieldLoginPage> {
   @override
   Widget build(BuildContext context) {
-    final phone = context.read<AuthCubit>().phone;
+    final phone = context.read<AuthCubit>().phoneController;
     return Form(
-      key: context.read<AuthCubit>().formKey,
+      key: context.read<AuthCubit>().phoneFormKey,
       child: Column(
         children: [
           Row(
