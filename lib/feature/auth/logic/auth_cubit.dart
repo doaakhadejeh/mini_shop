@@ -11,8 +11,14 @@ class AuthCubit extends Cubit<AuthState> {
   String selectedCountryCode = '+963';
   String otpCode = '';
   String verificationId = '';
-  TextEditingController phone = TextEditingController();
-  final formKey = GlobalKey<FormState>();
+
+  final phoneController = TextEditingController();
+  final emailController = TextEditingController();
+  final passwordController = TextEditingController();
+  final nameController = TextEditingController();
+  final loginFormKey = GlobalKey<FormState>();
+  final registerFormKey = GlobalKey<FormState>();
+  final phoneFormKey = GlobalKey<FormState>();
 
   Future<void> sendOtp(String phoneNumber) async {
     emit(AuthLoading());
@@ -45,6 +51,47 @@ class AuthCubit extends Cubit<AuthState> {
     );
   }
 
+  Future<void> loginWithEmail() async {
+    emit(AuthLoading());
+
+    final result = await _authRepository.loginWithEmail(
+      email: emailController.text.trim(),
+      password: passwordController.text.trim(),
+    );
+
+    result.fold(
+      (failure) => emit(AuthError(failure.message)),
+      (user) => emit(Authenticated(user)),
+    );
+  }
+
+  Future<void> registerWithEmail() async {
+    emit(AuthLoading());
+
+    final result = await _authRepository.registerWithEmail(
+      email: emailController.text.trim(),
+      password: passwordController.text.trim(),
+    );
+
+    result.fold(
+      (failure) => emit(AuthError(failure.message)),
+      (user) => emit(Authenticated(user)),
+    );
+  }
+
+  Future<void> resetPassword() async {
+    emit(AuthLoading());
+
+    final result = await _authRepository.resetPassword(
+      email: emailController.text.trim(),
+    );
+
+    result.fold(
+      (failure) => emit(AuthError(failure.message)),
+      (_) => emit(Unauthenticated()),
+    );
+  }
+
   void checkAuthStatus() {
     if (_authRepository.isLoggedIn()) {
       final result = _authRepository.getCurrentUser();
@@ -71,7 +118,10 @@ class AuthCubit extends Cubit<AuthState> {
 
   @override
   Future<void> close() {
-    phone.dispose();
+    phoneController.dispose();
+    emailController.dispose();
+    passwordController.dispose();
+    nameController.dispose();
     return super.close();
   }
 }

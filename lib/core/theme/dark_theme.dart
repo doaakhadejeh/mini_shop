@@ -3,22 +3,21 @@ import 'package:mimi_shope/core/theme/theme_extention.dart';
 
 class DarkTheme {
   static ThemeData darkTheme = ThemeData(
-    appBarTheme: AppBarThemeData(
-      backgroundColor: Colors.black,
-      centerTitle: true,
-      foregroundColor: Colors.white,
-    ),
-    scaffoldBackgroundColor: Colors.grey.withAlpha(40),
+    scaffoldBackgroundColor: const Color(0xFF0C0C0C),
     brightness: Brightness.dark,
     colorScheme: ColorScheme.fromSeed(
-      seedColor: Colors.brown.shade600,
+      seedColor: const Color(0xFFC67C4E),
       brightness: Brightness.dark,
     ),
     extensions: [
       const AppColors(
-        categorySelector: Colors.white,
-
-        categorySelectorText: Color(0xFF1F1F1F),
+        cardBackground: Color(0xFF1A1A1A),
+        cardBorder: Color(0xFF2A2A2A),
+        mainText: Colors.white,
+        subText: Color(0xFFA2A2A2),
+        searchBarBackground: Color.fromARGB(255, 61, 61, 61),
+        categoryUnselectedBg: Color.fromARGB(255, 61, 61, 61),
+        categoryUnselectedText: Color(0xFFA2A2A2),
       ),
     ],
   );

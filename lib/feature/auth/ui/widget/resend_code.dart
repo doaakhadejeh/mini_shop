@@ -19,7 +19,7 @@ class ResendCode extends StatelessWidget {
         GestureDetector(
           onTap: () {
             context.read<AuthCubit>().sendOtp(
-              cubit.selectedCountryCode + cubit.phone.text,
+              cubit.selectedCountryCode + cubit.phoneController.text,
             );
           },
           child: Text(

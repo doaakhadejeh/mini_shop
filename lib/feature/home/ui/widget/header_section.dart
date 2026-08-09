@@ -21,7 +21,10 @@ class HeaderSection extends StatelessWidget {
               children: [
                 Text(
                   'Damascus, Syria',
-                  style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
+                  style: TextStyle(
+                    fontSize: 16.sp,
+                    fontWeight: FontWeight.bold,
+                  ),
                 ),
                 Icon(
                   Icons.keyboard_arrow_down_rounded,
@@ -32,17 +35,20 @@ class HeaderSection extends StatelessWidget {
           ],
         ),
         Container(
-          width: 44,
-          height: 44,
+          width: 44.w,
+          height: 44.h,
           decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(14.r),
-            image: const DecorationImage(
-              image: NetworkImage(
-                'https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=150&q=80',
-              ),
-              fit: BoxFit.cover,
-            ),
+
+            // image: const DecorationImage(
+            //   image: NetworkImage(
+            //     'https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=150&q=80',
+            //   ),
+            //   fit: BoxFit.cover,
+            // ),
+            color: Colors.grey,
           ),
+          child: Icon(Icons.person),
         ),
       ],
     );
