@@ -1,8 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:go_router/go_router.dart';
 import 'package:mimi_shope/core/routing/const_rout.dart';
 import 'package:mimi_shope/core/theme/theme_extention.dart';
+import 'package:mimi_shope/feature/favorites/logic/favorites_state.dart';
+import 'package:mimi_shope/feature/favorites/logic/favotites_cubit.dart';
 import 'package:mimi_shope/feature/home/data/model/coffee_model.dart';
 
 class CoffeeCard extends StatelessWidget {
@@ -38,6 +41,8 @@ class CoffeeCard extends StatelessWidget {
                       borderRadius: BorderRadius.circular(16.r),
                       child: Image.network(
                         item.image!,
+                        width: 200.w,
+                        height: 200.h,
                         fit: BoxFit.cover,
                         errorBuilder: (context, error, stackTrace) {
                           return const Icon(
@@ -113,14 +118,35 @@ class CoffeeCard extends StatelessWidget {
                     fontWeight: FontWeight.bold,
                   ),
                 ),
-                Container(
-                  width: 36.w,
-                  height: 36.h,
-                  decoration: BoxDecoration(
-                    color: const Color(0xFFC67C4E),
-                    borderRadius: BorderRadius.circular(12.r),
-                  ),
-                  child: Icon(Icons.favorite, color: Colors.white, size: 20.w),
+                BlocBuilder<FavoritesCubit, FavoritesState>(
+                  builder: (context, state) {
+                    return Container(
+                      width: 36.w,
+                      height: 36.h,
+                      decoration: BoxDecoration(
+                        color: const Color(0xFFC67C4E),
+                        borderRadius: BorderRadius.circular(12.r),
+                      ),
+                      child: IconButton(
+                        onPressed: () {
+                          context.read<FavoritesCubit>().toggleFavorite(
+                            product: item,
+                          );
+                        },
+                        icon: Icon(
+                          Icons.favorite,
+                          color:
+                              context.read<FavoritesCubit>().isFavorite(
+                                    product: item,
+                                  ) ==
+                                  false
+                              ? Colors.white
+                              : Colors.red,
+                          size: 20.w,
+                        ),
+                      ),
+                    );
+                  },
                 ),
               ],
             ),

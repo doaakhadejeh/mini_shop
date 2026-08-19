@@ -33,8 +33,8 @@ void main() {
     image: 'image2',
   );
   final categories = [
-    CategoryModel(id: '1', name: 'Hot Coffee', products: [coffee1]),
-    CategoryModel(id: '2', name: 'Cold Coffee', products: [coffee2]),
+    CategoryModel(id: '1', name: 'Hot Coffee', product: [coffee1]),
+    CategoryModel(id: '2', name: 'Cold Coffee', product: [coffee2]),
   ];
   Widget createWidgetUnderTest() {
     return ScreenUtilInit(

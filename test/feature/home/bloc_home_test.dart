@@ -23,6 +23,47 @@ void main() {
     homeCubit.close();
   });
 
+  final milkLatte = CoffeeItemModel(
+    id: 1,
+    name: 'Milk Latte',
+    subtitle: 'Creamy milk coffee',
+    price: 4.5,
+    rating: 4.8,
+    image: 'image1',
+  );
+
+  final caramelLatte = CoffeeItemModel(
+    id: 2,
+    name: 'Caramel Latte',
+    subtitle: 'Sweet caramel coffee',
+    price: 5.0,
+    rating: 4.7,
+    image: 'image2',
+  );
+
+  final espresso = CoffeeItemModel(
+    id: 3,
+    name: 'Espresso',
+    subtitle: 'Strong classic coffee',
+    price: 3.0,
+    rating: 4.9,
+    image: 'image3',
+  );
+
+  final latteCategory = CategoryModel(
+    id: 'latte',
+    name: 'Latte',
+    product: [milkLatte, caramelLatte],
+  );
+
+  final espressoCategory = CategoryModel(
+    id: 'espresso',
+    name: 'Espresso',
+    product: [espresso],
+  );
+
+  final categories = [latteCategory, espressoCategory];
+
   group('HomeCubit', () {
     test('initial state is HomeInitial', () {
       expect(homeCubit.state, equals(HomeInitial()));
@@ -36,7 +77,7 @@ void main() {
             CategoryModel(
               id: "1",
               name: "categories",
-              products: [
+              product: [
                 CoffeeItemModel(
                   id: 1,
                   name: 'latte',
@@ -87,7 +128,7 @@ void main() {
             CategoryModel(
               id: '1',
               name: 'Hot Coffee',
-              products: [
+              product: [
                 CoffeeItemModel(
                   id: 1,
                   name: 'Latte',
@@ -101,7 +142,7 @@ void main() {
             CategoryModel(
               id: '2',
               name: 'Cold Coffee',
-              products: [
+              product: [
                 CoffeeItemModel(
                   id: 2,
                   name: 'Cappuccino',
@@ -135,6 +176,100 @@ void main() {
               'selected product name',
               'Cappuccino',
             ),
+      ],
+    );
+
+    blocTest<HomeCubit, HomeState>(
+      'searches through all products',
+      build: () {
+        when(
+          () => mockHomeRepository.getHomeData(),
+        ).thenAnswer((_) async => Right(categories));
+        return homeCubit;
+      },
+      act: (cubit) async {
+        await cubit.loadHome();
+        cubit.searchProducts('Latte');
+      },
+      expect: () => [
+        HomeLoading(),
+        HomeSuccess(
+          categories: categories,
+          products: [milkLatte, caramelLatte, espresso],
+        ),
+        HomeSearch(categories: categories, products: [milkLatte, caramelLatte]),
+      ],
+    );
+
+    blocTest<HomeCubit, HomeState>(
+      'searches by product subtitle',
+      build: () {
+        when(
+          () => mockHomeRepository.getHomeData(),
+        ).thenAnswer((_) async => Right(categories));
+        return homeCubit;
+      },
+      act: (cubit) async {
+        await cubit.loadHome();
+        cubit.searchProducts('strong');
+      },
+      expect: () => [
+        HomeLoading(),
+        HomeSuccess(
+          categories: categories,
+          products: [milkLatte, caramelLatte, espresso],
+        ),
+        HomeSearch(categories: categories, products: [espresso]),
+      ],
+    );
+
+    blocTest<HomeCubit, HomeState>(
+      'search is case insensitive',
+
+      build: () {
+        when(
+          () => mockHomeRepository.getHomeData(),
+        ).thenAnswer((_) async => Right(categories));
+        return homeCubit;
+      },
+      act: (cubit) async {
+        await cubit.loadHome();
+        cubit.searchProducts('MILK LATTE');
+      },
+      expect: () => [
+        HomeLoading(),
+        HomeSuccess(
+          categories: categories,
+          products: [milkLatte, caramelLatte, espresso],
+        ),
+        HomeSearch(categories: categories, products: [milkLatte]),
+      ],
+    );
+
+    blocTest<HomeCubit, HomeState>(
+      'returns to HomeSuccess with all products when search is empty',
+      build: () {
+        when(
+          () => mockHomeRepository.getHomeData(),
+        ).thenAnswer((_) async => Right(categories));
+        return homeCubit;
+      },
+      act: (cubit) async {
+        await cubit.loadHome();
+        cubit.searchProducts('milk');
+        cubit.searchProducts('');
+      },
+      expect: () => [
+        HomeLoading(),
+        HomeSuccess(
+          categories: categories,
+          products: [milkLatte, caramelLatte, espresso],
+        ),
+        HomeSearch(categories: categories, products: [milkLatte]),
+        HomeSuccess(
+          categories: categories,
+          products: [milkLatte, caramelLatte, espresso],
+        ),
       ],
     );
   });

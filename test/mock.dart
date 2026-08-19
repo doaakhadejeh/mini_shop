@@ -1,6 +1,8 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:mimi_shope/feature/auth/data/repository/auth_repository.dart';
+import 'package:mimi_shope/feature/favorites/data/repository/favorites_repository.dart';
+import 'package:mimi_shope/feature/favorites/data/service/favorites_service.dart';
 import 'package:mimi_shope/feature/home/data/repository/home_repository.dart';
 import 'package:mimi_shope/feature/home/data/service/home_service.dart';
 import 'package:mocktail/mocktail.dart';
@@ -23,3 +25,9 @@ class MockFirebaseFireStor extends Mock implements FirebaseFirestore {}
 class MockHomeService extends Mock implements HomeService {}
 
 class MockHomeRepository extends Mock implements HomeRepository {}
+
+//mock ing for favorites
+
+class MockFavoritesService extends Mock implements FavoritesService {}
+
+class MockFavoriteRepository extends Mock implements FavoritesRepository {}

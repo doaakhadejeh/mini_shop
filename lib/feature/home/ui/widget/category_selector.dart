@@ -22,7 +22,7 @@ class CategorySelector extends StatelessWidget {
       height: 38.h,
       child: ListView.builder(
         scrollDirection: Axis.horizontal,
-        itemCount: categories.length,
+        itemCount: categories.length + 1,
         itemBuilder: (context, index) {
           final isSelected = selectedIndex == index;
           return GestureDetector(
@@ -38,7 +38,7 @@ class CategorySelector extends StatelessWidget {
                 borderRadius: BorderRadius.circular(12.r),
               ),
               child: Text(
-                categories[index].name,
+                index == 0 ? 'All' : categories[index - 1].name,
                 style: TextStyle(
                   color: isSelected
                       ? Colors.white

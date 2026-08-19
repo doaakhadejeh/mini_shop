@@ -10,7 +10,7 @@ class HomeService {
     return await _store
         .collection('categories')
         .doc(categoryId)
-        .collection('products')
+        .collection('product')
         .get();
   }
 

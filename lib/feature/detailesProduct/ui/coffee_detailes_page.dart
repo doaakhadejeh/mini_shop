@@ -40,7 +40,7 @@ class CoffeeDetailsScreen extends StatelessWidget {
         builder: (context, state) {
           return SafeArea(
             child: Padding(
-              padding: EdgeInsets.symmetric(horizontal: 7.w, vertical: 6.h),
+              padding: EdgeInsets.symmetric(horizontal: 15.w, vertical: 6.h),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
@@ -56,7 +56,7 @@ class CoffeeDetailsScreen extends StatelessWidget {
                       ),
                     ),
                   ),
-                  Spacer(),
+
                   BottomDetailsCoffee(price: item.price, name: item.name),
                 ],
               ),
