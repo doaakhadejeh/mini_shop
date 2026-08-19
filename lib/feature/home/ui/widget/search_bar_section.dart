@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:mimi_shope/core/theme/theme_extention.dart';
+import 'package:mimi_shope/feature/home/logic/home_cubit.dart';
 
 class SearchBarSection extends StatelessWidget {
   const SearchBarSection({super.key});
@@ -24,6 +26,9 @@ class SearchBarSection extends StatelessWidget {
                 SizedBox(width: 12.w),
                 Expanded(
                   child: TextField(
+                    onChanged: (query) {
+                      context.read<HomeCubit>().searchProducts(query);
+                    },
                     style: TextStyle(color: appColors.mainText),
                     decoration: InputDecoration(
                       hintText: 'Search coffee...',

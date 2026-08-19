@@ -6,6 +6,10 @@ import 'package:mimi_shope/core/theme/themeService/theme_service.dart';
 import 'package:mimi_shope/feature/auth/data/repository/auth_repository.dart';
 import 'package:mimi_shope/feature/auth/data/service/auth_service.dart';
 import 'package:mimi_shope/feature/auth/logic/auth_cubit.dart';
+import 'package:mimi_shope/feature/detailesProduct/ui/logic/detailes_product_cubit.dart';
+import 'package:mimi_shope/feature/favorites/data/repository/favorites_repository.dart';
+import 'package:mimi_shope/feature/favorites/data/service/favorites_service.dart';
+import 'package:mimi_shope/feature/favorites/logic/favotites_cubit.dart';
 import 'package:mimi_shope/feature/home/data/repository/home_repository.dart';
 import 'package:mimi_shope/feature/home/data/service/home_service.dart';
 import 'package:mimi_shope/feature/home/logic/home_cubit.dart';
@@ -40,4 +44,16 @@ Future<void> setupGetIt() async {
     () => HomeRepository(getIt<HomeService>()),
   );
   getIt.registerFactory<HomeCubit>(() => HomeCubit(getIt<HomeRepository>()));
+
+  getIt.registerFactory<DetailesProductCubit>(() => DetailesProductCubit());
+
+  getIt.registerLazySingleton<FavoritesService>(
+    () => FavoritesService(getIt<FirebaseFirestore>()),
+  );
+  getIt.registerLazySingleton<FavoritesRepository>(
+    () => FavoritesRepository(getIt<FavoritesService>()),
+  );
+  getIt.registerFactory<FavoritesCubit>(
+    () => FavoritesCubit(getIt<FavoritesRepository>()),
+  );
 }

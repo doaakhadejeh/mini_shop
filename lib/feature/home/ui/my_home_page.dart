@@ -27,6 +27,33 @@ class MyHomePage extends StatelessWidget {
                 return Center(
                   child: CircularProgressIndicator(color: Colors.amber),
                 );
+              }
+              if (state is HomeSearch) {
+                return Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    const HeaderSection(),
+                    SizedBox(height: 24.h),
+                    const SearchBarSection(),
+
+                    SizedBox(height: 20.h),
+
+                    GridView.builder(
+                      shrinkWrap: true,
+                      physics: const NeverScrollableScrollPhysics(),
+                      itemCount: state.products.length,
+                      gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                        crossAxisCount: 2,
+                        childAspectRatio: 0.68,
+                        crossAxisSpacing: 16.w,
+                        mainAxisSpacing: 16.h,
+                      ),
+                      itemBuilder: (context, index) {
+                        return CoffeeCard(item: state.products[index]);
+                      },
+                    ),
+                  ],
+                );
               } else if (state is HomeSuccess) {
                 final List<CategoryModel> categories = state.categories;
                 final List<CoffeeItemModel> coffeeList = state.products;
@@ -45,7 +72,13 @@ class MyHomePage extends StatelessWidget {
                           .read<HomeCubit>()
                           .selectedCategoryIndex,
                       onCategorySelected: (index) {
-                        final categoryId = categories[index].id;
+                        if (index == 0) {
+                          context.read<HomeCubit>().selectCategory(null);
+                          return;
+                        }
+
+                        final categoryId = categories[index - 1].id;
+
                         context.read<HomeCubit>().selectCategory(categoryId);
                       },
                     ),
@@ -67,11 +100,13 @@ class MyHomePage extends StatelessWidget {
                   ],
                 );
               } else if (state is HomeError) {
-                return Column(
-                  children: [
-                    Text(state.message),
-                    const Icon(Icons.error, color: Colors.red),
-                  ],
+                return Center(
+                  child: Column(
+                    children: [
+                      Text(state.message),
+                      const Icon(Icons.error, color: Colors.red),
+                    ],
+                  ),
                 );
               }
               return SizedBox.shrink();

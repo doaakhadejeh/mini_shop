@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:mimi_shope/core/di/dependency_injection.dart';
+import 'package:mimi_shope/feature/favorites/logic/favotites_cubit.dart';
+import 'package:mimi_shope/feature/favorites/ui/favorites.dart';
 import 'package:mimi_shope/feature/home/logic/home_cubit.dart';
 import 'package:mimi_shope/feature/home/ui/my_home_page.dart';
 import 'package:mimi_shope/feature/home/ui/widget/custom_bottom_nav_bar.dart';
@@ -14,11 +16,20 @@ class HomeScreen extends StatefulWidget {
 
 class _HomeScreenState extends State<HomeScreen> {
   final myList = [
-    BlocProvider(
-      create: (context) => getIt<HomeCubit>()..loadHome(),
+    MultiBlocProvider(
+      providers: [
+        BlocProvider(create: (context) => getIt<HomeCubit>()..loadHome()),
+        BlocProvider(
+          create: (context) => getIt<FavoritesCubit>()..getFavoriteProducts(),
+        ),
+      ],
       child: const MyHomePage(),
     ),
-    Container(),
+
+    BlocProvider(
+      create: (context) => getIt<FavoritesCubit>()..getFavoriteProducts(),
+      child: Favorites(),
+    ),
     Container(),
     Container(),
   ];

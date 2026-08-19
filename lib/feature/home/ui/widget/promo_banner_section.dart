@@ -33,15 +33,15 @@ class PromoBannerSection extends StatelessWidget {
             ),
           ),
           Padding(
-            padding: EdgeInsets.all(6.w),
+            padding: EdgeInsets.all(20.w),
             child: Column(
               crossAxisAlignment: .start,
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 Container(
                   padding: EdgeInsets.symmetric(
-                    horizontal: 10.w,
-                    vertical: 2.h,
+                    horizontal: 15.w,
+                    vertical: 7.h,
                   ),
                   decoration: BoxDecoration(
                     color: const Color(0xFFED5151),
@@ -56,7 +56,7 @@ class PromoBannerSection extends StatelessWidget {
                     ),
                   ),
                 ),
-                SizedBox(height: 2.h),
+                SizedBox(height: 20.h),
                 Text(
                   'Buy one get\none FREE',
                   style: TextStyle(

@@ -13,7 +13,6 @@ class HomeCubit extends Cubit<HomeState> {
   List<CategoryModel> _categories = [];
   List<CoffeeItemModel> _allProducts = [];
   int selectedCategoryIndex = 0;
-
   void selectCategory(String? categoryId) {
     if (categoryId == null) {
       selectedCategoryIndex = 0;
@@ -23,12 +22,16 @@ class HomeCubit extends Cubit<HomeState> {
     final index = _categories.indexWhere(
       (category) => category.id == categoryId,
     );
+
     if (index == -1) {
       return;
     }
-    selectedCategoryIndex = index;
+
+    selectedCategoryIndex = index + 1;
+
     final category = _categories[index];
-    emit(HomeSuccess(categories: _categories, products: category.products));
+
+    emit(HomeSuccess(categories: _categories, products: category.product));
   }
 
   Future<void> loadHome() async {
@@ -44,11 +47,27 @@ class HomeCubit extends Cubit<HomeState> {
         _categories = categories;
 
         _allProducts = categories
-            .expand((category) => category.products)
+            .expand((category) => category.product)
             .toList();
 
         emit(HomeSuccess(categories: _categories, products: _allProducts));
       },
     );
+  }
+
+  void searchProducts(String query) {
+    final searchQuery = query.trim().toLowerCase();
+
+    if (searchQuery.isEmpty) {
+      emit(HomeSuccess(categories: _categories, products: _allProducts));
+      return;
+    }
+
+    final results = _allProducts.where((product) {
+      return product.name.toLowerCase().contains(searchQuery) ||
+          product.subtitle.toLowerCase().contains(searchQuery);
+    }).toList();
+
+    emit(HomeSearch(categories: _categories, products: results));
   }
 }

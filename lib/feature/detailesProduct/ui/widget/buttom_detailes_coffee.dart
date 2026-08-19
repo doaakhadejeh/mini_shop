@@ -19,6 +19,7 @@ class BottomDetailsCoffee extends StatelessWidget {
     final cubit = context.read<DetailesProductCubit>();
 
     return Container(
+      height: 80.h,
       padding: EdgeInsets.symmetric(vertical: 16.h),
       decoration: BoxDecoration(
         border: Border(top: BorderSide(color: Colors.white.withAlpha(20))),
@@ -40,14 +41,15 @@ class BottomDetailsCoffee extends StatelessWidget {
                   '\$${cubit.getTotalPrice(price).toStringAsFixed(2)}',
                   style: TextStyle(
                     color: const Color(0xFFC67C4E),
-                    fontSize: 22.sp,
+                    fontSize: 20.sp,
                     fontWeight: FontWeight.bold,
                   ),
                 ),
               ],
             ),
           ),
-          Expanded(
+          SizedBox(
+            width: 150.w,
             child: CustomButton(
               onPressed: () {
                 ScaffoldMessenger.of(context).showSnackBar(
@@ -59,19 +61,16 @@ class BottomDetailsCoffee extends StatelessWidget {
               },
               backgroundColor: const Color(0xFFC67C4E),
               borderColor: const Color(0xFFC67C4E),
+              foregroundColor: Colors.white,
               isRectangleBorder: true,
               radiusRectangleBorder: 16.r,
-              width: 180.w,
-              child: Padding(
-                padding: EdgeInsets.symmetric(vertical: 12.h),
+              child: Center(
                 child: Text(
                   'Add to Cart',
-                  textAlign: TextAlign.center,
-                  style: TextStyle(
-                    fontSize: 16.sp,
-                    fontWeight: FontWeight.bold,
-                    color: Colors.white,
-                  ),
+                  // style: TextStyle(
+                  //   fontSize: 15.sp,
+                  //   fontWeight: FontWeight.bold,
+                  // ),
                 ),
               ),
             ),

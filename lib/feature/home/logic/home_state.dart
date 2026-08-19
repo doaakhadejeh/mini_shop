@@ -24,6 +24,16 @@ final class HomeSuccess extends HomeState {
   List<Object?> get props => [categories, products];
 }
 
+final class HomeSearch extends HomeState {
+  final List<CategoryModel> categories;
+  final List<CoffeeItemModel> products;
+
+  HomeSearch({required this.categories, required this.products});
+
+  @override
+  List<Object?> get props => [categories, products];
+}
+
 final class HomeError extends HomeState {
   final String message;
 

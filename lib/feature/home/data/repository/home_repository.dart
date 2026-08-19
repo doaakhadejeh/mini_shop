@@ -17,14 +17,14 @@ class HomeRepository {
         final productsSnapshot = await _homeService.getProductsByCategory(
           categoryDoc.id,
         );
-        final products = productsSnapshot.docs
+        final product = productsSnapshot.docs
             .map((doc) => CoffeeItemModel.fromJson(doc.data()))
             .toList();
         categories.add(
           CategoryModel(
             id: categoryDoc.id,
             name: categoryDoc.data()['name'] as String,
-            products: products,
+            product: product,
           ),
         );
       }
@@ -33,18 +33,4 @@ class HomeRepository {
       return Left(handleException(e));
     }
   }
-
-  // Future<Either<Failure, List<CoffeeItemModel>>> getProductsByCategory(
-  //   String categoryId,
-  // ) async {
-  //   try {
-  //     final data = await _homeService.getProductsByCategory(categoryId);
-  //     final products = data.docs
-  //         .map((doc) => CoffeeItemModel.fromJson(doc.data()))
-  //         .toList();
-  //     return Right(products);
-  //   } catch (e) {
-  //     return Left(handleException(e));
-  //   }
-  // }
 }
