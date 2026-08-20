@@ -9,6 +9,7 @@ import 'package:mimi_shope/feature/auth/ui/login_email_page.dart';
 import 'package:mimi_shope/feature/auth/ui/login_page.dart';
 import 'package:mimi_shope/feature/auth/ui/otp_page.dart';
 import 'package:mimi_shope/feature/auth/ui/register_page.dart';
+import 'package:mimi_shope/feature/cart/logic/cart_cubit.dart';
 import 'package:mimi_shope/feature/detailesProduct/ui/coffee_detailes_page.dart';
 import 'package:mimi_shope/feature/detailesProduct/ui/logic/detailes_product_cubit.dart';
 import 'package:mimi_shope/feature/home/data/model/coffee_model.dart';
@@ -63,8 +64,11 @@ final GoRouter router = GoRouter(
       path: ConstRouter.detaileCoffee,
       builder: (BuildContext context, GoRouterState state) {
         final item = state.extra as CoffeeItemModel;
-        return BlocProvider(
-          create: (context) => getIt<DetailesProductCubit>(),
+        return MultiBlocProvider(
+          providers: [
+            BlocProvider(create: (context) => getIt<DetailesProductCubit>()),
+            BlocProvider(create: (context) => getIt<CartCubit>()),
+          ],
           child: CoffeeDetailsScreen(item: item),
         );
       },

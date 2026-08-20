@@ -6,6 +6,9 @@ import 'package:mimi_shope/core/theme/themeService/theme_service.dart';
 import 'package:mimi_shope/feature/auth/data/repository/auth_repository.dart';
 import 'package:mimi_shope/feature/auth/data/service/auth_service.dart';
 import 'package:mimi_shope/feature/auth/logic/auth_cubit.dart';
+import 'package:mimi_shope/feature/cart/data/repository/cart_repository.dart';
+import 'package:mimi_shope/feature/cart/data/service/cart_service.dart';
+import 'package:mimi_shope/feature/cart/logic/cart_cubit.dart';
 import 'package:mimi_shope/feature/detailesProduct/ui/logic/detailes_product_cubit.dart';
 import 'package:mimi_shope/feature/favorites/data/repository/favorites_repository.dart';
 import 'package:mimi_shope/feature/favorites/data/service/favorites_service.dart';
@@ -56,4 +59,12 @@ Future<void> setupGetIt() async {
   getIt.registerFactory<FavoritesCubit>(
     () => FavoritesCubit(getIt<FavoritesRepository>()),
   );
+
+  getIt.registerLazySingleton<CartService>(
+    () => CartService(getIt<FirebaseFirestore>()),
+  );
+  getIt.registerLazySingleton<CartRepository>(
+    () => CartRepository(getIt<CartService>()),
+  );
+  getIt.registerFactory<CartCubit>(() => CartCubit(getIt<CartRepository>()));
 }

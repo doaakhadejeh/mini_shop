@@ -1,6 +1,8 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:mimi_shope/feature/auth/data/repository/auth_repository.dart';
+import 'package:mimi_shope/feature/cart/data/repository/cart_repository.dart';
+import 'package:mimi_shope/feature/cart/data/service/cart_service.dart';
 import 'package:mimi_shope/feature/favorites/data/repository/favorites_repository.dart';
 import 'package:mimi_shope/feature/favorites/data/service/favorites_service.dart';
 import 'package:mimi_shope/feature/home/data/repository/home_repository.dart';
@@ -19,15 +21,20 @@ class MockAuthService extends Mock implements AuthService {}
 
 class MockAuthRepository extends Mock implements AuthenticationRepository {}
 
-//mock ing for home
+//mocking for home
 class MockFirebaseFireStor extends Mock implements FirebaseFirestore {}
 
 class MockHomeService extends Mock implements HomeService {}
 
 class MockHomeRepository extends Mock implements HomeRepository {}
 
-//mock ing for favorites
+//mocking for favorites
 
 class MockFavoritesService extends Mock implements FavoritesService {}
 
 class MockFavoriteRepository extends Mock implements FavoritesRepository {}
+
+//mocking for cart
+class MockCartService extends Mock implements CartService {}
+
+class MockCartRepository extends Mock implements CartRepository {}
