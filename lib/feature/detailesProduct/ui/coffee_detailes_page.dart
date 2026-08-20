@@ -57,7 +57,7 @@ class CoffeeDetailsScreen extends StatelessWidget {
                     ),
                   ),
 
-                  BottomDetailsCoffee(price: item.price, name: item.name),
+                  BottomDetailsCoffee(product: item),
                 ],
               ),
             ),

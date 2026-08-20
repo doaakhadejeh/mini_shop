@@ -2,17 +2,14 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:mimi_shope/core/widget/custom_button.dart';
+import 'package:mimi_shope/feature/cart/logic/cart_cubit.dart';
 import 'package:mimi_shope/feature/detailesProduct/ui/logic/detailes_product_cubit.dart';
+import 'package:mimi_shope/feature/home/data/model/coffee_model.dart';
 
 class BottomDetailsCoffee extends StatelessWidget {
-  final double price;
-  final String name;
+  final CoffeeItemModel product;
 
-  const BottomDetailsCoffee({
-    super.key,
-    required this.price,
-    required this.name,
-  });
+  const BottomDetailsCoffee({super.key, required this.product});
 
   @override
   Widget build(BuildContext context) {
@@ -38,7 +35,7 @@ class BottomDetailsCoffee extends StatelessWidget {
                 ),
                 SizedBox(height: 4.h),
                 Text(
-                  '\$${cubit.getTotalPrice(price).toStringAsFixed(2)}',
+                  '\$${cubit.getTotalPrice(product.price).toStringAsFixed(2)}',
                   style: TextStyle(
                     color: const Color(0xFFC67C4E),
                     fontSize: 20.sp,
@@ -52,9 +49,15 @@ class BottomDetailsCoffee extends StatelessWidget {
             width: 150.w,
             child: CustomButton(
               onPressed: () {
+             context.read<CartCubit>().addToCart(
+      product: product, 
+      quantity: cubit.quantity,
+    );
                 ScaffoldMessenger.of(context).showSnackBar(
                   SnackBar(
-                    content: Text('Added ${cubit.quantity} $name to cart!'),
+                    content: Text(
+                      'Added ${cubit.quantity} ${product.name} to cart!',
+                    ),
                     backgroundColor: const Color(0xFFC67C4E),
                   ),
                 );
@@ -67,10 +70,10 @@ class BottomDetailsCoffee extends StatelessWidget {
               child: Center(
                 child: Text(
                   'Add to Cart',
-                  // style: TextStyle(
-                  //   fontSize: 15.sp,
-                  //   fontWeight: FontWeight.bold,
-                  // ),
+                  style: TextStyle(
+                    fontSize: 10.sp,
+                    fontWeight: FontWeight.bold,
+                  ),
                 ),
               ),
             ),

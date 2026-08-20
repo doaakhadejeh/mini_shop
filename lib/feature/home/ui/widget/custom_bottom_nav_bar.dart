@@ -16,7 +16,7 @@ class CustomBottomNavBar extends StatelessWidget {
       Icons.home_rounded,
       Icons.favorite_rounded,
       Icons.shopping_bag_rounded,
-      Icons.notifications_rounded,
+      Icons.history_rounded,
     ];
 
     return Container(
