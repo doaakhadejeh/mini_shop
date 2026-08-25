@@ -5,7 +5,7 @@ import 'package:go_router/go_router.dart';
 import 'package:mimi_shope/core/routing/const_rout.dart';
 import 'package:mimi_shope/core/theme/theme_extention.dart';
 import 'package:mimi_shope/feature/favorites/logic/favorites_state.dart';
-import 'package:mimi_shope/feature/favorites/logic/favotites_cubit.dart';
+import 'package:mimi_shope/feature/favorites/logic/favorites_cubit.dart';
 import 'package:mimi_shope/feature/home/data/model/coffee_model.dart';
 
 class CoffeeCard extends StatelessWidget {

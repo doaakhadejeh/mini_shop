@@ -23,15 +23,18 @@ class LocationService {
     return Geolocator.getCurrentPosition();
   }
 
-  Future<String> getCurrentLocationName() async {
-    final position = await getCurrentPosition(); 
-    final placemarks = await placemarkFromCoordinates(
-      position.latitude,
-      position.longitude,
-    );
+  Future<String> getLocationName({
+    required double latitude,
+    required double longitude,
+  }) async {
+    final placemarks = await placemarkFromCoordinates(latitude, longitude);
+
+    if (placemarks.isEmpty) {
+      throw Exception('Location name not found');
+    }
 
     final place = placemarks.first;
 
-    return '${place.locality}, ${place.country}';
+    return '${place.locality}, ${place.country} , ${place.thoroughfare}';
   }
 }

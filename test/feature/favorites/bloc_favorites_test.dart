@@ -3,7 +3,7 @@ import 'package:dartz/dartz.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mimi_shope/core/error/api_error_state.dart';
 import 'package:mimi_shope/feature/favorites/logic/favorites_state.dart';
-import 'package:mimi_shope/feature/favorites/logic/favotites_cubit.dart';
+import 'package:mimi_shope/feature/favorites/logic/favorites_cubit.dart';
 import 'package:mimi_shope/feature/home/data/model/coffee_model.dart';
 import 'package:mocktail/mocktail.dart';
 

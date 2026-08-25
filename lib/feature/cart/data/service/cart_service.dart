@@ -75,4 +75,12 @@ class CartService {
   }) async {
     await _cartRef(userId).doc(productId.toString()).delete();
   }
+
+  Future<void> clearCart({required String userId}) async {
+    final cartItems = await _cartRef(userId).get();
+
+    for (final doc in cartItems.docs) {
+      await doc.reference.delete();
+    }
+  }
 }

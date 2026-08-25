@@ -9,13 +9,24 @@ import 'package:mimi_shope/feature/auth/logic/auth_cubit.dart';
 import 'package:mimi_shope/feature/cart/data/repository/cart_repository.dart';
 import 'package:mimi_shope/feature/cart/data/service/cart_service.dart';
 import 'package:mimi_shope/feature/cart/logic/cart_cubit.dart';
+import 'package:mimi_shope/feature/chekout/logic/checkout_cubit.dart';
+import 'package:mimi_shope/feature/detailesOrders/logic/order_detailes_cubit.dart';
 import 'package:mimi_shope/feature/detailesProduct/ui/logic/detailes_product_cubit.dart';
 import 'package:mimi_shope/feature/favorites/data/repository/favorites_repository.dart';
 import 'package:mimi_shope/feature/favorites/data/service/favorites_service.dart';
-import 'package:mimi_shope/feature/favorites/logic/favotites_cubit.dart';
+import 'package:mimi_shope/feature/favorites/logic/favorites_cubit.dart';
 import 'package:mimi_shope/feature/home/data/repository/home_repository.dart';
 import 'package:mimi_shope/feature/home/data/service/home_service.dart';
 import 'package:mimi_shope/feature/home/logic/home_cubit.dart';
+import 'package:mimi_shope/feature/location/data/repository/location_repository.dart';
+import 'package:mimi_shope/feature/location/data/service/location_service.dart';
+import 'package:mimi_shope/feature/order/data/repository/order_repository.dart';
+import 'package:mimi_shope/feature/order/data/service/order_service.dart';
+import 'package:mimi_shope/feature/order/logic/order_cubit.dart';
+import 'package:mimi_shope/feature/payment/data/repository/payment_repository.dart';
+import 'package:mimi_shope/feature/payment/data/service/mock_payment_service.dart';
+import 'package:mimi_shope/feature/payment/data/service/payment_service.dart';
+import 'package:mimi_shope/feature/payment/logic/payment_cubit.dart';
 
 final getIt = GetIt.instance;
 
@@ -67,4 +78,38 @@ Future<void> setupGetIt() async {
     () => CartRepository(getIt<CartService>()),
   );
   getIt.registerFactory<CartCubit>(() => CartCubit(getIt<CartRepository>()));
+
+  getIt.registerLazySingleton<OrderService>(
+    () => OrderService(getIt<FirebaseFirestore>()),
+  );
+  getIt.registerLazySingleton<OrderRepository>(
+    () => OrderRepository(getIt<OrderService>()),
+  );
+  getIt.registerFactory<CheckoutCubit>(
+    () => CheckoutCubit(
+      getIt<CartRepository>(),
+      getIt<OrderRepository>(),
+      getIt<LocationRepository>(),
+    ),
+  );
+
+  getIt.registerFactory<OrdersCubit>(
+    () => OrdersCubit(getIt<OrderRepository>()),
+  );
+  getIt.registerFactory<OrderDetailsCubit>(() => OrderDetailsCubit());
+
+  getIt.registerLazySingleton<LocationService>(() => LocationService());
+  getIt.registerLazySingleton<LocationRepository>(
+    () => LocationRepository(getIt<LocationService>()),
+  );
+
+  getIt.registerLazySingleton<PaymentService>(() => MockPaymentService());
+
+  getIt.registerLazySingleton<PaymentRepository>(
+    () => PaymentRepository(getIt<PaymentService>()),
+  );
+
+  getIt.registerFactory<PaymentCubit>(
+    () => PaymentCubit(getIt<PaymentRepository>()),
+  );
 }

@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:go_router/go_router.dart';
+import 'package:mimi_shope/core/routing/const_rout.dart';
 import 'package:mimi_shope/core/theme/theme_extention.dart';
 import 'package:mimi_shope/feature/cart/ui/widget/price_row_cart.dart';
 
@@ -54,7 +56,9 @@ class OrderSummary extends StatelessWidget {
             width: double.infinity,
             height: 52.h,
             child: ElevatedButton(
-              onPressed: () {},
+              onPressed: () {
+                context.push(ConstRouter.checkout);
+              },
               style: ElevatedButton.styleFrom(
                 backgroundColor: primaryColor,
                 foregroundColor: Colors.white,

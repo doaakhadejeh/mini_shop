@@ -33,6 +33,11 @@ class FavoritesCubit extends Cubit<FavoritesState> {
     final currentState = state;
     final userId = await _getUserId();
 
+    if (userId == null) {
+      emit(FavoritesError('Please log in to continue.'));
+      return;
+    }
+
     if (currentState is FavoritesSuccess) {
       final isFavorite = currentState.products.any(
         (item) => item.id == product.id,
@@ -40,13 +45,13 @@ class FavoritesCubit extends Cubit<FavoritesState> {
 
       if (isFavorite) {
         await _removeFavorite(
-          userId: userId!,
+          userId: userId,
           productId: product.id,
           currentProducts: currentState.products,
         );
       } else {
         await _addFavorite(
-          userId: userId!,
+          userId: userId,
           product: product,
           currentProducts: currentState.products,
         );
@@ -94,8 +99,13 @@ class FavoritesCubit extends Cubit<FavoritesState> {
     emit(FavoritesLoading());
     final userId = await _getUserId();
 
+    if (userId == null) {
+      emit(FavoritesError('Please log in to continue.'));
+      return;
+    }
+
     final result = await _favoritesRepository.getFavoriteProducts(
-      userId: userId!,
+      userId: userId,
     );
 
     result.fold(

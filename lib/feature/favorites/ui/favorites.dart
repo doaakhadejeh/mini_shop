@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:mimi_shope/feature/favorites/logic/favorites_state.dart';
-import 'package:mimi_shope/feature/favorites/logic/favotites_cubit.dart';
+import 'package:mimi_shope/feature/favorites/logic/favorites_cubit.dart';
 import 'package:mimi_shope/feature/home/data/model/coffee_model.dart';
 import 'package:mimi_shope/feature/home/ui/widget/coffee_card.dart';
 
