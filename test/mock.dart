@@ -7,6 +7,10 @@ import 'package:mimi_shope/feature/favorites/data/repository/favorites_repositor
 import 'package:mimi_shope/feature/favorites/data/service/favorites_service.dart';
 import 'package:mimi_shope/feature/home/data/repository/home_repository.dart';
 import 'package:mimi_shope/feature/home/data/service/home_service.dart';
+import 'package:mimi_shope/feature/location/data/repository/location_repository.dart';
+import 'package:mimi_shope/feature/order/data/repository/order_repository.dart';
+import 'package:mimi_shope/feature/order/data/service/order_service.dart';
+import 'package:mimi_shope/feature/payment/data/repository/payment_repository.dart';
 import 'package:mocktail/mocktail.dart';
 import 'package:mimi_shope/feature/auth/data/service/auth_service.dart';
 
@@ -38,3 +42,12 @@ class MockFavoriteRepository extends Mock implements FavoritesRepository {}
 class MockCartService extends Mock implements CartService {}
 
 class MockCartRepository extends Mock implements CartRepository {}
+
+//mocking for order
+class MockOrderService extends Mock implements OrderService {}
+
+class MockOrderRepository extends Mock implements OrderRepository {}
+
+class MockPaymentRepository extends Mock implements PaymentRepository {}
+
+class MocklocationRepository extends Mock implements LocationRepository {}

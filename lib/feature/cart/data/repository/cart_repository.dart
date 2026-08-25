@@ -70,4 +70,14 @@ class CartRepository {
       return Left(handleException(e));
     }
   }
+
+  Future<Either<Failure, void>> clearCart({required String userId}) async {
+    try {
+      await _cartService.clearCart(userId: userId);
+
+      return const Right(null);
+    } catch (e) {
+      return Left(handleException(e));
+    }
+  }
 }
