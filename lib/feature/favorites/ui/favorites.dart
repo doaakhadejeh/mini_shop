@@ -27,6 +27,9 @@ class Favorites extends StatelessWidget {
                 return GridView.builder(
                   itemCount: coffeeList.length,
                   gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                    childAspectRatio: 0.6,
+                    crossAxisSpacing: 10.w,
+                    mainAxisSpacing: 10.w,
                     crossAxisCount: 2,
                   ),
                   itemBuilder: (context, index) {

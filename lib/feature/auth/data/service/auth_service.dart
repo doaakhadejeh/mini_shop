@@ -58,6 +58,19 @@ class AuthService {
     await _firebaseAuth.sendPasswordResetEmail(email: email);
   }
 
+  Future<void> changePassword({required String newPassword}) async {
+    final user = _firebaseAuth.currentUser;
+
+    if (user == null) {
+      throw FirebaseAuthException(
+        code: 'user-not-found',
+        message: 'No authenticated user found.',
+      );
+    }
+
+    await user.updatePassword(newPassword);
+  }
+
   Future<void> logout() async {
     await _firebaseAuth.signOut();
   }

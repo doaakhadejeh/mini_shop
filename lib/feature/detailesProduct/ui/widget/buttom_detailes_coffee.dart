@@ -16,7 +16,6 @@ class BottomDetailsCoffee extends StatelessWidget {
     final cubit = context.read<DetailesProductCubit>();
 
     return Container(
-      height: 80.h,
       padding: EdgeInsets.symmetric(vertical: 16.h),
       decoration: BoxDecoration(
         border: Border(top: BorderSide(color: Colors.white.withAlpha(20))),
@@ -49,10 +48,10 @@ class BottomDetailsCoffee extends StatelessWidget {
             width: 150.w,
             child: CustomButton(
               onPressed: () {
-             context.read<CartCubit>().addToCart(
-      product: product, 
-      quantity: cubit.quantity,
-    );
+                context.read<CartCubit>().addToCart(
+                  product: product,
+                  quantity: cubit.quantity,
+                );
                 ScaffoldMessenger.of(context).showSnackBar(
                   SnackBar(
                     content: Text(
@@ -68,12 +67,13 @@ class BottomDetailsCoffee extends StatelessWidget {
               isRectangleBorder: true,
               radiusRectangleBorder: 16.r,
               child: Center(
-                child: Text(
-                  'Add to Cart',
-                  style: TextStyle(
-                    fontSize: 10.sp,
-                    fontWeight: FontWeight.bold,
-                  ),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Icon(Icons.shopify_rounded),
+                    SizedBox(width: 8.w),
+                    Text("Add to cart"),
+                  ],
                 ),
               ),
             ),

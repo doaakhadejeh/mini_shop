@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:go_router/go_router.dart';
+import 'package:mimi_shope/core/routing/const_rout.dart';
 import 'package:mimi_shope/core/theme/theme_extention.dart';
 import 'package:mimi_shope/feature/home/logic/home_cubit.dart';
 
@@ -52,7 +54,10 @@ class SearchBarSection extends StatelessWidget {
             color: const Color(0xFFC67C4E),
             borderRadius: BorderRadius.circular(16.r),
           ),
-          child: const Icon(Icons.tune_rounded, color: Colors.white),
+          child: InkWell(
+            onTap: () => context.push(ConstRouter.setting),
+            child: const Icon(Icons.tune_rounded, color: Colors.white),
+          ),
         ),
       ],
     );

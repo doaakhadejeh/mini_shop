@@ -33,11 +33,7 @@ class TopDetailesCoffee extends StatelessWidget {
         SizedBox(height: 20.h),
         Text(
           item.name,
-          style: TextStyle(
-            color: Colors.white,
-            fontSize: 22.sp,
-            fontWeight: FontWeight.bold,
-          ),
+          style: TextStyle(fontSize: 22.sp, fontWeight: FontWeight.bold),
         ),
         SizedBox(height: 6.h),
         Text(

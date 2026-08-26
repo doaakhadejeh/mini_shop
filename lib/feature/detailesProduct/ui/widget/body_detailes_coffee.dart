@@ -23,11 +23,7 @@ class BodyDetailesCoffee extends StatelessWidget {
               SizedBox(width: 6.w),
               Text(
                 '${item.rating}',
-                style: TextStyle(
-                  color: Colors.white,
-                  fontSize: 17.sp,
-                  fontWeight: FontWeight.bold,
-                ),
+                style: TextStyle(fontSize: 17.sp, fontWeight: FontWeight.bold),
               ),
             ],
           ),

@@ -11,4 +11,7 @@ class ConstRouter {
   static final String order = "/order";
   static final String payment = "/payment";
   static final String cart = "/cart";
+  static final String setting = "/setting";
+  static final String changePassword = "/changePassword";
+  static final String aboutUs = "/aboutUs";
 }

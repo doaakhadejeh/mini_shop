@@ -44,7 +44,7 @@ class MyHomePage extends StatelessWidget {
                       itemCount: state.products.length,
                       gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
                         crossAxisCount: 2,
-                        childAspectRatio: 0.68,
+                        childAspectRatio: 0.5,
                         crossAxisSpacing: 16.w,
                         mainAxisSpacing: 16.h,
                       ),

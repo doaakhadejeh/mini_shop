@@ -89,6 +89,18 @@ class AuthenticationRepository {
     }
   }
 
+  Future<Either<Failure, void>> changePassword({
+    required String newPassword,
+  }) async {
+    try {
+      await _authService.changePassword(newPassword: newPassword);
+
+      return const Right(null);
+    } catch (e) {
+      return Left(handleException(e));
+    }
+  }
+
   Future<Either<Failure, void>> logout() async {
     try {
       await _authService.logout();
