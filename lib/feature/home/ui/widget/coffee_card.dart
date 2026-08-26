@@ -34,6 +34,7 @@ class CoffeeCard extends StatelessWidget {
               child: Stack(
                 children: [
                   Container(
+                    height: 200.h,
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(16.r),
                     ),

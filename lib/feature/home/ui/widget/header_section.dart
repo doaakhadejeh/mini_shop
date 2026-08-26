@@ -9,31 +9,38 @@ class HeaderSection extends StatelessWidget {
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
-        Column(
-          crossAxisAlignment: .start,
-          children: [
-            Text(
-              'Location',
-              style: TextStyle(color: Colors.grey.shade600, fontSize: 12.sp),
-            ),
-            SizedBox(height: 4),
-            Row(
-              children: [
-                Text(
-                  'Damascus, Syria',
-                  style: TextStyle(
-                    fontSize: 16.sp,
-                    fontWeight: FontWeight.bold,
-                  ),
-                ),
-                Icon(
-                  Icons.keyboard_arrow_down_rounded,
-                  color: Color(0xFFC67C4E),
-                ),
-              ],
-            ),
-          ],
+        Padding(
+          padding: EdgeInsets.only(top: 7.h),
+          child: Text(
+            'Coffee Shop',
+            style: TextStyle(fontSize: 20.sp, fontWeight: FontWeight.bold),
+          ),
         ),
+        // Column(
+        //   crossAxisAlignment: .start,
+        //   children: [
+        //     Text(
+        //       'Location',
+        //       style: TextStyle(color: Colors.grey.shade600, fontSize: 12.sp),
+        //     ),
+        //     SizedBox(height: 4),
+        //     Row(
+        //       children: [
+        //         Text(
+        //           'Damascus, Syria',
+        //           style: TextStyle(
+        //             fontSize: 16.sp,
+        //             fontWeight: FontWeight.bold,
+        //           ),
+        //         ),
+        //         Icon(
+        //           Icons.keyboard_arrow_down_rounded,
+        //           color: Color(0xFFC67C4E),
+        //         ),
+        //       ],
+        //     ),
+        //   ],
+        // ),
         Container(
           width: 44.w,
           height: 44.h,

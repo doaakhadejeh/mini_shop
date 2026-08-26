@@ -25,6 +25,9 @@ import 'package:mimi_shope/feature/order/logic/order_cubit.dart';
 import 'package:mimi_shope/feature/order/ui/order_page.dart';
 import 'package:mimi_shope/feature/payment/logic/payment_cubit.dart';
 import 'package:mimi_shope/feature/payment/ui/payment_page.dart';
+import 'package:mimi_shope/feature/setting/aboutus/about_us.dart';
+import 'package:mimi_shope/feature/setting/changePassword/change_password.dart';
+import 'package:mimi_shope/feature/setting/ui/setting.dart';
 
 final GoRouter router = GoRouter(
   initialLocation: ConstRouter.init,
@@ -62,6 +65,26 @@ final GoRouter router = GoRouter(
         return BlocProvider(
           create: (context) => getIt<AuthCubit>(),
           child: const RegisterPage(),
+        );
+      },
+    ),
+
+    GoRoute(
+      path: ConstRouter.changePassword,
+      builder: (BuildContext context, GoRouterState state) {
+        return BlocProvider(
+          create: (context) => getIt<AuthCubit>(),
+          child: const ChangePasswordPage(),
+        );
+      },
+    ),
+
+    GoRoute(
+      path: ConstRouter.setting,
+      builder: (BuildContext context, GoRouterState state) {
+        return BlocProvider(
+          create: (context) => getIt<AuthCubit>(),
+          child: const SettingsPage(),
         );
       },
     ),
@@ -118,6 +141,13 @@ final GoRouter router = GoRouter(
       path: ConstRouter.home,
       builder: (BuildContext context, GoRouterState state) {
         return const HomeScreen();
+      },
+    ),
+
+    GoRoute(
+      path: ConstRouter.aboutUs,
+      builder: (BuildContext context, GoRouterState state) {
+        return const AboutUsPage();
       },
     ),
     GoRoute(

@@ -19,6 +19,9 @@ class AuthCubit extends Cubit<AuthState> {
   final loginFormKey = GlobalKey<FormState>();
   final registerFormKey = GlobalKey<FormState>();
   final phoneFormKey = GlobalKey<FormState>();
+  final changePasswordFormKey = GlobalKey<FormState>();
+  final changePasswordController = TextEditingController();
+  final confirmChangePasswordController = TextEditingController();
 
   Future<void> sendOtp(String phoneNumber) async {
     emit(AuthLoading());
@@ -116,12 +119,27 @@ class AuthCubit extends Cubit<AuthState> {
     );
   }
 
+  Future<void> changePassword({required String newPassword}) async {
+    emit(AuthLoading());
+
+    final result = await _authRepository.changePassword(
+      newPassword: newPassword,
+    );
+
+    result.fold(
+      (failure) => emit(AuthError(failure.message)),
+      (_) => emit(AuthInitial()),
+    );
+  }
+
   @override
   Future<void> close() {
     phoneController.dispose();
     emailController.dispose();
     passwordController.dispose();
     nameController.dispose();
+    changePasswordController.dispose();
+    confirmChangePasswordController.dispose();
     return super.close();
   }
 }
