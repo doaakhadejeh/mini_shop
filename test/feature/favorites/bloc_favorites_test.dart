@@ -105,7 +105,7 @@ void main() {
         when(
           () => mockFavoriteRepository.addToFavorites(
             userId: '234',
-            productId: milkLatte.id,
+            product: milkLatte,
           ),
         ).thenAnswer((_) async => const Right(null));
 
@@ -120,7 +120,7 @@ void main() {
         verify(
           () => mockFavoriteRepository.addToFavorites(
             userId: '234',
-            productId: milkLatte.id,
+            product: milkLatte,
           ),
         ).called(1);
       },
@@ -158,7 +158,7 @@ void main() {
         when(
           () => mockFavoriteRepository.addToFavorites(
             userId: '234',
-            productId: milkLatte.id,
+            product: milkLatte,
           ),
         ).thenAnswer((_) async => const Right(null));
 
@@ -175,7 +175,7 @@ void main() {
         when(
           () => mockFavoriteRepository.addToFavorites(
             userId: '234',
-            productId: milkLatte.id,
+            product: milkLatte,
           ),
         ).thenAnswer((_) async => const Right(null));
 
@@ -190,7 +190,7 @@ void main() {
         verify(
           () => mockFavoriteRepository.addToFavorites(
             userId: '234',
-            productId: milkLatte.id,
+            product: milkLatte,
           ),
         ).called(1);
       },

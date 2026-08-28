@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:mimi_shope/feature/detailesProduct/ui/logic/detailes_product_cubit.dart';
-import 'package:mimi_shope/feature/detailesProduct/ui/logic/detailes_product_state.dart';
+import 'package:mimi_shope/feature/detailesProduct/logic/detailes_product_cubit.dart';
+import 'package:mimi_shope/feature/detailesProduct/logic/detailes_product_state.dart';
 import 'package:mimi_shope/feature/detailesProduct/ui/widget/body_detailes_coffee.dart';
 import 'package:mimi_shope/feature/detailesProduct/ui/widget/buttom_detailes_coffee.dart';
 import 'package:mimi_shope/feature/detailesProduct/ui/widget/top_detailes_coffee.dart';

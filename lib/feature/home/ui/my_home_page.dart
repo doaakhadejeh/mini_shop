@@ -61,9 +61,9 @@ class MyHomePage extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     const HeaderSection(),
-                    SizedBox(height: 24.h),
+                    SizedBox(height: 15.h),
                     const SearchBarSection(),
-                    SizedBox(height: 24.h),
+                    SizedBox(height: 20.h),
                     const PromoBannerSection(),
                     SizedBox(height: 24.h),
                     CategorySelector(

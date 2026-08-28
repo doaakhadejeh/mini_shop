@@ -20,7 +20,7 @@ class OrdersCubit extends Cubit<OrdersState> {
     emit(OrdersLoading());
     final userId = await _getUserId();
     final result = await _orderRepository.getOrders(userId: userId!);
-
+    if (isClosed) return;
     result.fold(
       (failure) {
         emit(OrdersError(message: failure.message));

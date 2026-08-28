@@ -15,7 +15,7 @@ import 'package:mimi_shope/feature/chekout/ui/checkout.dart';
 import 'package:mimi_shope/feature/detailesOrders/logic/order_detailes_cubit.dart';
 import 'package:mimi_shope/feature/detailesOrders/ui/order_detailes_page.dart';
 import 'package:mimi_shope/feature/detailesProduct/ui/coffee_detailes_page.dart';
-import 'package:mimi_shope/feature/detailesProduct/ui/logic/detailes_product_cubit.dart';
+import 'package:mimi_shope/feature/detailesProduct/logic/detailes_product_cubit.dart';
 import 'package:mimi_shope/feature/home/data/model/coffee_model.dart';
 import 'package:mimi_shope/feature/home/ui/home_screen.dart';
 import 'package:mimi_shope/feature/location/data/model/location_model.dart';

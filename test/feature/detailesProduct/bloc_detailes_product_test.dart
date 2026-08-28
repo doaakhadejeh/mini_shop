@@ -1,7 +1,7 @@
 import 'package:bloc_test/bloc_test.dart';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:mimi_shope/feature/detailesProduct/ui/logic/detailes_product_cubit.dart';
-import 'package:mimi_shope/feature/detailesProduct/ui/logic/detailes_product_state.dart';
+import 'package:mimi_shope/feature/detailesProduct/logic/detailes_product_cubit.dart';
+import 'package:mimi_shope/feature/detailesProduct/logic/detailes_product_state.dart';
 
 void main() {
   late DetailesProductCubit cubit;
