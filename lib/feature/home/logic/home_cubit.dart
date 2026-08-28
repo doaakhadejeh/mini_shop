@@ -38,6 +38,7 @@ class HomeCubit extends Cubit<HomeState> {
     emit(HomeLoading());
 
     final result = await _repository.getHomeData();
+    if (isClosed) return;
 
     result.fold(
       (failure) {

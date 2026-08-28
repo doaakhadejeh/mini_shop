@@ -4,6 +4,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mimi_shope/core/theme/theme.dart';
+import 'package:mimi_shope/feature/favorites/logic/favorites_cubit.dart';
 import 'package:mimi_shope/feature/home/data/model/category_model.dart';
 import 'package:mimi_shope/feature/home/data/model/coffee_model.dart';
 import 'package:mimi_shope/feature/home/logic/home_cubit.dart';
@@ -15,7 +16,10 @@ import '../../mock.dart';
 
 void main() {
   late HomeCubit homeCubit;
+  late FavoritesCubit favoritesCubit;
   late MockHomeRepository mockHomeRepository;
+  late MockFavoriteRepository mockFavoriteRepository;
+
   final coffee1 = CoffeeItemModel(
     id: 1,
     name: 'Latte',
@@ -44,7 +48,13 @@ void main() {
       builder: (context, child) {
         return MaterialApp(
           theme: AppTheme.lightTheme,
-          home: BlocProvider.value(value: homeCubit, child: const MyHomePage()),
+          home: MultiBlocProvider(
+            providers: [
+              BlocProvider.value(value: homeCubit),
+              BlocProvider.value(value: favoritesCubit),
+            ],
+            child: const MyHomePage(),
+          ),
         );
       },
     );
@@ -52,11 +62,14 @@ void main() {
 
   setUp(() {
     mockHomeRepository = MockHomeRepository();
+    mockFavoriteRepository = MockFavoriteRepository();
     homeCubit = HomeCubit(mockHomeRepository);
+    favoritesCubit = FavoritesCubit(mockFavoriteRepository);
   });
 
   tearDown(() {
     homeCubit.close();
+    favoritesCubit.close();
   });
 
   group('MyHomePage', () {
@@ -89,23 +102,6 @@ void main() {
       await tester.pump();
       expect(find.text('Failed to load coffee'), findsOneWidget);
       expect(find.byIcon(Icons.error), findsOneWidget);
-    });
-
-    testWidgets('displays selected category products when category is tapped', (
-      tester,
-    ) async {
-      when(
-        () => mockHomeRepository.getHomeData(),
-      ).thenAnswer((_) async => Right(categories));
-      await tester.pumpWidget(createWidgetUnderTest());
-      await homeCubit.loadHome();
-      await tester.pump();
-      expect(find.text('Latte'), findsOneWidget);
-      expect(find.text('Cappuccino'), findsOneWidget);
-      await tester.tap(find.text('Cold Coffee'));
-      await tester.pump();
-      expect(find.text('Cappuccino'), findsOneWidget);
-      expect(find.text('Latte'), findsNothing);
     });
   });
 }

@@ -66,7 +66,7 @@ class FavoritesCubit extends Cubit<FavoritesState> {
   }) async {
     final result = await _favoritesRepository.addToFavorites(
       userId: userId,
-      productId: product.id,
+      product: product,
     );
 
     result.fold((failure) => emit(FavoritesError(failure.message)), (_) {
@@ -107,7 +107,7 @@ class FavoritesCubit extends Cubit<FavoritesState> {
     final result = await _favoritesRepository.getFavoriteProducts(
       userId: userId,
     );
-
+    if (isClosed) return;
     result.fold(
       (failure) {
         emit(FavoritesError(failure.message));

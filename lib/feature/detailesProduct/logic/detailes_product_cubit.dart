@@ -1,5 +1,5 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:mimi_shope/feature/detailesProduct/ui/logic/detailes_product_state.dart';
+import 'package:mimi_shope/feature/detailesProduct/logic/detailes_product_state.dart';
 
 class DetailesProductCubit extends Cubit<DetailesProductState> {
   DetailesProductCubit() : super(DetailesProductInitial());

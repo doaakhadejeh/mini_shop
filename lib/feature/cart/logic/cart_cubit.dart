@@ -30,7 +30,7 @@ class CartCubit extends Cubit<CartState> {
     }
 
     final result = await _cartRepository.getCartItems(userId: userId);
-
+    if (isClosed) return;
     result.fold(
       (failure) {
         emit(CartError(failure.message));

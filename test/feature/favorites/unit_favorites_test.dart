@@ -9,10 +9,19 @@ import '../../mock.dart';
 void main() {
   late FavoritesRepository favoritesRepository;
   late MockFavoritesService mockFavoritesService;
+  late MockLoclService mockFavoritesLocalService;
+  late MockInternetService mockInternetService;
 
   setUp(() {
     mockFavoritesService = MockFavoritesService();
-    favoritesRepository = FavoritesRepository(mockFavoritesService);
+    mockInternetService = MockInternetService();
+    mockFavoritesLocalService = MockLoclService();
+
+    favoritesRepository = FavoritesRepository(
+      mockFavoritesService,
+      mockFavoritesLocalService,
+      mockInternetService,
+    );
   });
 
   final milkLatte = CoffeeItemModel(
@@ -36,12 +45,21 @@ void main() {
   group('FavoritesRepository', () {
     test('addToFavorites returns Right when service succeeds', () async {
       when(
+        () => mockInternetService.hasConnection,
+      ).thenAnswer((_) async => true);
+      when(
         () => mockFavoritesService.addToFavorites(userId: '234', productId: 1),
+      ).thenAnswer((_) async {});
+      when(
+        () => mockFavoritesLocalService.addToFavorites(
+          userId: '234',
+          product: milkLatte,
+        ),
       ).thenAnswer((_) async {});
 
       final result = await favoritesRepository.addToFavorites(
         userId: '234',
-        productId: 1,
+        product: milkLatte,
       );
 
       expect(result, const Right(null));
@@ -53,12 +71,15 @@ void main() {
 
     test('addToFavorites returns Left when service throws', () async {
       when(
+        () => mockInternetService.hasConnection,
+      ).thenAnswer((_) async => true);
+      when(
         () => mockFavoritesService.addToFavorites(userId: '234', productId: 1),
       ).thenThrow(Exception('Firebase error'));
 
       final result = await favoritesRepository.addToFavorites(
         userId: '234',
-        productId: 1,
+        product: milkLatte,
       );
 
       expect(result.isLeft(), true);
@@ -70,7 +91,17 @@ void main() {
 
     test('removeFromFavorites returns Right when service succeeds', () async {
       when(
+        () => mockInternetService.hasConnection,
+      ).thenAnswer((_) async => true);
+      when(
         () => mockFavoritesService.removeFromFavorites(
+          userId: '234',
+          productId: 1,
+        ),
+      ).thenAnswer((_) async {});
+
+      when(
+        () => mockFavoritesLocalService.removeFromFavorites(
           userId: '234',
           productId: 1,
         ),
@@ -92,6 +123,9 @@ void main() {
     });
 
     test('removeFromFavorites returns Left when service throws', () async {
+      when(
+        () => mockInternetService.hasConnection,
+      ).thenAnswer((_) async => true);
       when(
         () => mockFavoritesService.removeFromFavorites(
           userId: '234',
@@ -118,6 +152,9 @@ void main() {
       'isFavorite returns Right(false) when product is not favorite',
       () async {
         when(
+          () => mockInternetService.hasConnection,
+        ).thenAnswer((_) async => true);
+        when(
           () => mockFavoritesService.isFavorite(userId: '234', productId: 1),
         ).thenAnswer((_) async => false);
 
@@ -134,10 +171,19 @@ void main() {
       'getFavoriteProducts returns products when service succeeds',
       () async {
         final products = [milkLatte, caramelLatte];
-
+        when(
+          () => mockInternetService.hasConnection,
+        ).thenAnswer((_) async => true);
         when(
           () => mockFavoritesService.getFavoriteProducts(userId: '234'),
         ).thenAnswer((_) async => products);
+
+        when(
+          () => mockFavoritesLocalService.saveFavoriteProducts(
+            userId: '234',
+            products: products,
+          ),
+        ).thenAnswer((_) async {});
 
         final result = await favoritesRepository.getFavoriteProducts(
           userId: '234',
@@ -149,6 +195,9 @@ void main() {
 
     test('getFavoriteProducts returns Left when service throws', () async {
       when(
+        () => mockInternetService.hasConnection,
+      ).thenAnswer((_) async => true);
+      when(
         () => mockFavoritesService.getFavoriteProducts(userId: '234'),
       ).thenThrow(Exception('Firebase error'));
 
@@ -158,5 +207,25 @@ void main() {
 
       expect(result.isLeft(), true);
     });
+
+    test(
+      'getFavoriteProducts returns products when local service succeeds',
+      () async {
+        final products = [milkLatte, caramelLatte];
+        when(
+          () => mockInternetService.hasConnection,
+        ).thenAnswer((_) async => false);
+
+        when(
+          () => mockFavoritesLocalService.getFavoriteProducts(userId: '234'),
+        ).thenAnswer((_) async => products);
+
+        final result = await favoritesRepository.getFavoriteProducts(
+          userId: '234',
+        );
+
+        expect(result, Right(products));
+      },
+    );
   });
 }

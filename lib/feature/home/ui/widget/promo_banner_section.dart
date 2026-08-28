@@ -10,7 +10,7 @@ class PromoBannerSection extends StatelessWidget {
 
     return Container(
       width: double.infinity,
-      height: 155.h,
+      height: 166.h,
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(20.r),
         gradient: LinearGradient(
@@ -24,19 +24,19 @@ class PromoBannerSection extends StatelessWidget {
       child: Stack(
         children: [
           Positioned(
-            right: -20.w,
-            bottom: -20.h,
+            right: -10.w,
+            bottom: -10.h,
             child: Icon(
               Icons.local_cafe_rounded,
-              size: 160.w,
+              size: 160,
               color: const Color(0xFFC67C4E).withAlpha(40),
             ),
           ),
           Padding(
-            padding: EdgeInsets.all(20.w),
+            padding: EdgeInsets.symmetric(vertical: 15.h, horizontal: 20.w),
             child: Column(
               crossAxisAlignment: .start,
-              mainAxisAlignment: MainAxisAlignment.center,
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
                 Container(
                   padding: EdgeInsets.symmetric(
@@ -56,14 +56,14 @@ class PromoBannerSection extends StatelessWidget {
                     ),
                   ),
                 ),
-                SizedBox(height: 20.h),
+                // SizedBox(height: 30.h),
                 Text(
                   'Buy one get\none FREE',
                   style: TextStyle(
                     color: Colors.white,
                     fontSize: 17.sp,
                     fontWeight: FontWeight.bold,
-                    height: 1.1,
+                    height: 1.0,
                   ),
                 ),
               ],

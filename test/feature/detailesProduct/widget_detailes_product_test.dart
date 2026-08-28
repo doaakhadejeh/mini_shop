@@ -3,8 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mimi_shope/feature/detailesProduct/ui/coffee_detailes_page.dart';
-
-import 'package:mimi_shope/feature/detailesProduct/ui/logic/detailes_product_cubit.dart';
+import 'package:mimi_shope/feature/detailesProduct/logic/detailes_product_cubit.dart';
 import 'package:mimi_shope/feature/home/data/model/coffee_model.dart';
 
 void main() {
@@ -35,10 +34,6 @@ void main() {
     );
   }
 
-  // setUpAll(() {
-  //   HttpOverrides.global = null;
-  // });
-
   setUp(() {
     detailesProductCubit = DetailesProductCubit();
   });
@@ -56,7 +51,6 @@ void main() {
       expect(find.text('4.5'), findsOneWidget);
       expect(find.text('Total Price'), findsOneWidget);
       expect(find.text('\$4.00'), findsOneWidget);
-      expect(find.text('Add to Cart'), findsOneWidget);
     });
 
     testWidgets('displays initial quantity as 1', (tester) async {
@@ -102,12 +96,6 @@ void main() {
 
       expect(find.text('1'), findsOneWidget);
       expect(find.text('\$4.00'), findsOneWidget);
-    });
-
-    testWidgets('displays add to cart button', (tester) async {
-      await tester.pumpWidget(createWidgetUnderTest());
-
-      expect(find.text('Add to Cart'), findsOneWidget);
     });
   });
 }

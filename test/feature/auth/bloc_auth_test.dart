@@ -20,10 +20,6 @@ void main() {
     authCubit = AuthCubit(mockAuthRepository);
   });
 
-  tearDown(() {
-    authCubit.close();
-  });
-
   group('AuthCubit Tests', () {
     test(' inistial state AuthInitial', () {
       expect(authCubit.state, equals(AuthInitial()));

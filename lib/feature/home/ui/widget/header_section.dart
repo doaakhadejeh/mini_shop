@@ -42,10 +42,10 @@ class HeaderSection extends StatelessWidget {
         //   ],
         // ),
         Container(
-          width: 44.w,
-          height: 44.h,
+          width: 35.w,
+          height: 35.h,
           decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(14.r),
+            borderRadius: BorderRadius.circular(10.r),
 
             // image: const DecorationImage(
             //   image: NetworkImage(
