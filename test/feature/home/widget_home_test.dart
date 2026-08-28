@@ -1,4 +1,3 @@
-import 'package:dartz/dartz.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -10,7 +9,6 @@ import 'package:mimi_shope/feature/home/data/model/coffee_model.dart';
 import 'package:mimi_shope/feature/home/logic/home_cubit.dart';
 import 'package:mimi_shope/feature/home/logic/home_state.dart';
 import 'package:mimi_shope/feature/home/ui/my_home_page.dart';
-import 'package:mocktail/mocktail.dart';
 
 import '../../mock.dart';
 

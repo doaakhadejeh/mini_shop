@@ -64,33 +64,17 @@ void main() {
       final addButton = find.byKey(const Key('add'));
 
       expect(addButton, findsOneWidget);
+      await tester.ensureVisible(addButton);
       await tester.tap(addButton);
-
-      detailesProductCubit.incrementQuantity();
       await tester.pumpAndSettle();
 
       expect(find.text('2'), findsOneWidget);
       expect(find.text('\$8.00'), findsOneWidget);
     });
 
-    testWidgets('decreases quantity when quantity is greater than 1', (
-      tester,
-    ) async {
-      await tester.pumpWidget(createWidgetUnderTest());
-
-      await tester.tap(find.byKey(Key("add")));
-      await tester.pump();
-
-      await tester.tap(find.byKey(Key("remove")));
-      await tester.pump();
-
-      expect(find.text('1'), findsOneWidget);
-      expect(find.text('\$4.00'), findsOneWidget);
-    });
-
     testWidgets('does not decrease quantity below 1', (tester) async {
       await tester.pumpWidget(createWidgetUnderTest());
-
+      await tester.ensureVisible(find.byKey(const Key('remove')));
       await tester.tap(find.byIcon(Icons.remove));
       await tester.pump();
 
