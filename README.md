@@ -77,11 +77,11 @@ A modern coffee shopping mobile application built with **Flutter** and **Firebas
 
 | Home  - dark     |  Home - light      | 
 | ---------- |  ---------- | 
-| <img src='asset/image/home_n.png' width="220"/> |  <img src='asset/image/home_l.png 'width="220"/> |
+| <img src='asset/image/home_n.png' width="220"/> |  <img src='asset/image/home_l.png ' width="220"/> |
 
 | Coffee Details | Search     |
 | -------------  | ---------- |
-| <img src='asset/image/detailes_l.png' width="220"/> | <img src='asset/image/search_l.png 'width="220"/> |
+| <img src='asset/image/detailes_l.png' width="220"/> | <img src='asset/image/search_l.png ' width="220"/> |
 
 ### ❤️ Favorites
 
