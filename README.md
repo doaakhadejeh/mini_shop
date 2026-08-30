@@ -71,7 +71,7 @@ A modern coffee shopping mobile application built with **Flutter** and **Firebas
 
 | Email Login | Phone Login | Register   |
 | ----------- | ----------- | ---------- |
-| <img src="asset/image/login_email_l.png" width="220"/> | <img src='asset/image/login_phone_n.png' width="220"/>  | <img src='asset/image/register_n.png'width="220"/> |
+| <img src="asset/image/login_email_l.png" width="220"/> | <img src='asset/image/login_phone_l.png' width="220"/>  | <img src='asset/image/register_l.png'width="220"/> |
 
 ### 🏠 Home & Products
 
@@ -81,7 +81,7 @@ A modern coffee shopping mobile application built with **Flutter** and **Firebas
 
 | Coffee Details | Search     |
 | -------------  | ---------- |
-| <img src='asset/image/details_n.png'width="220"/> | <img src='asset/image/search_n.png'width="220"/> |
+| <img src='asset/image/detailes_l.png'width="220"/> | <img src='asset/image/search_l.png'width="220"/> |
 
 ### ❤️ Favorites
 
