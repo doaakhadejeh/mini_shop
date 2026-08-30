@@ -28,7 +28,6 @@ class OrderItems extends StatelessWidget {
 
           return Row(
             children: [
-              // Product image
               Container(
                 width: 65,
                 height: 65,
@@ -50,7 +49,6 @@ class OrderItems extends StatelessWidget {
 
               const SizedBox(width: 12),
 
-              // Name + quantity
               Expanded(
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,

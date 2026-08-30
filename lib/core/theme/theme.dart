@@ -6,6 +6,3 @@ class AppTheme {
   static ThemeData lightTheme = LightTheme.lightTheme;
   static ThemeData darkTheme = DarkTheme.darkTheme;
 }
-
-
-// final colors = Theme.of(context).extension<AppColors>()!;

@@ -22,9 +22,7 @@ class AuthenticationRepository {
         onVerificationFailed: (e) {
           throw e;
         },
-        onVerificationCompleted: (credential) async {
-          //  print("verificationCompleted");
-        },
+        onVerificationCompleted: (credential) async {},
         onCodeAutoRetrievalTimeout: (verificationId) {},
       );
       return const Right(null);

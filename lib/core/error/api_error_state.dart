@@ -1,5 +1,4 @@
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:dio/dio.dart';
 import 'package:mimi_shope/core/error/api_error_model.dart';
 
 Failure handleException(dynamic e) {
@@ -9,29 +8,6 @@ Failure handleException(dynamic e) {
 
   if (e is FirebaseException) {
     return Failure(_handleFirebaseCoreError(e.code), code: e.code);
-  }
-
-  if (e is DioException) {
-    switch (e.type) {
-      case DioExceptionType.connectionTimeout:
-        return Failure("Connection timeout");
-      case DioExceptionType.receiveTimeout:
-        return Failure("Receive timeout");
-      case DioExceptionType.sendTimeout:
-        return Failure("Send timeout");
-      case DioExceptionType.badCertificate:
-      case DioExceptionType.badResponse:
-        return Failure(
-          e.response?.data["message"] ?? "Server error",
-          statusCode: e.response?.statusCode,
-        );
-      case DioExceptionType.cancel:
-        return Failure("Request cancelled");
-      case DioExceptionType.unknown:
-        return Failure("No Internet connection");
-      default:
-        return Failure("Unexpected network error");
-    }
   }
 
   return Failure("An unexpected error happened: ${e.toString()}");

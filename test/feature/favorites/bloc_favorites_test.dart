@@ -43,15 +43,6 @@ void main() {
     image: 'image2',
   );
 
-  // final espresso = CoffeeItemModel(
-  //   id: 3,
-  //   name: 'Espresso',
-  //   subtitle: 'Strong classic coffee',
-  //   price: 3.0,
-  //   rating: 4.9,
-  //   image: 'image3',
-  // );
-
   group('Fvorites Cubit', () {
     test('initial state is FvoritesInitial', () {
       expect(favoritesCubit.state, equals(FavoritesInitial()));

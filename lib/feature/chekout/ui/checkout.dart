@@ -39,7 +39,7 @@ class CheckoutPage extends StatelessWidget {
             ScaffoldMessenger.of(context).showSnackBar(
               const SnackBar(content: Text('Order placed successfully')),
             );
-            context.push(ConstRouter.home);
+            context.push(ConstRouter.order);
           }
           if (state is CheckoutPaymentRequired) {
             final paymentSuccess = await context.push<bool>(

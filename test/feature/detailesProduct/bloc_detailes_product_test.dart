@@ -23,7 +23,7 @@ void main() {
       'increments quantity',
       build: () => cubit,
       act: (cubit) => cubit.incrementQuantity(),
-      expect: () => [DetailesProductUpdated()],
+      expect: () => [DetailesProductUpdated(2)],
       verify: (cubit) {
         expect(cubit.quantity, 2);
       },
@@ -31,12 +31,10 @@ void main() {
 
     blocTest<DetailesProductCubit, DetailesProductState>(
       'decrements quantity when quantity is greater than 1',
-      build: () {
-        cubit.quantity = 2;
-        return cubit;
-      },
+      build: () => cubit,
+      seed: () => DetailesProductUpdated(2),
       act: (cubit) => cubit.decrementQuantity(),
-      expect: () => [DetailesProductUpdated()],
+      expect: () => [DetailesProductUpdated(1)],
       verify: (cubit) {
         expect(cubit.quantity, 1);
       },
@@ -53,8 +51,11 @@ void main() {
     );
 
     test('calculates total price correctly', () {
-      cubit.quantity = 3;
+      // quantity starts at 1
+      cubit.incrementQuantity();
+      cubit.incrementQuantity();
 
+      expect(cubit.quantity, 3);
       expect(cubit.getTotalPrice(4.5), 13.5);
     });
   });

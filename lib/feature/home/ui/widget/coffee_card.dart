@@ -1,3 +1,4 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -40,12 +41,12 @@ class CoffeeCard extends StatelessWidget {
                     ),
                     child: ClipRRect(
                       borderRadius: BorderRadius.circular(16.r),
-                      child: Image.network(
-                        item.image!,
+                      child: CachedNetworkImage(
+                        imageUrl: item.image!,
                         width: 200.w,
                         height: 200.h,
                         fit: BoxFit.cover,
-                        errorBuilder: (context, error, stackTrace) {
+                        errorWidget: (context, url, error) {
                           return const Icon(
                             Icons.local_cafe,
                             color: Colors.grey,

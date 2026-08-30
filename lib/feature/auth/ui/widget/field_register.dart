@@ -42,9 +42,6 @@ class _FieldRegisterState extends State<FieldRegister> {
               if (value == null || value.isEmpty) {
                 return "Email must not be empty";
               }
-              // if (!RegExp(r'^[\w-\.]+([\w-]+\.)+[\w-]{2,4}$').hasMatch(value)) {
-              //   return "Please enter a valid email";
-              // }
               return null;
             },
           ),
