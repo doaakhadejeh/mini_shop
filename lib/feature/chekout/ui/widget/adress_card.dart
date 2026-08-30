@@ -31,8 +31,8 @@ class AddressCard extends StatelessWidget {
         );
         if (result != null) {
           cubit.selectLocation(
-            latitude: result.latitude,
-            longitude: result.longitude,
+            latitude: result.latitude!,
+            longitude: result.longitude!,
           );
         }
       },

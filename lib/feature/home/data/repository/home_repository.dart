@@ -52,7 +52,6 @@ class HomeRepository {
         );
       }
 
-      // Update local cache with the latest remote data.
       await _localService.saveHomeData(categories);
 
       return Right(categories);

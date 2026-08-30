@@ -8,6 +8,8 @@ class DetailesProductInitial extends DetailesProductState {
 }
 
 class DetailesProductUpdated extends DetailesProductState {
+  final int quantity;
+  DetailesProductUpdated(this.quantity);
   @override
-  List<Object?> get props => [];
+  List<Object?> get props => [quantity];
 }

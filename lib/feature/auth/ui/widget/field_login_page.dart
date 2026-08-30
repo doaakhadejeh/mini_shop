@@ -53,6 +53,7 @@ class _FieldLoginPageState extends State<FieldLoginPage> {
               Expanded(
                 child: CustomTextFormField(
                   controller: phone,
+                  typekeybord: .number,
                   hinttext: 'phone number',
                   prefixicon: const Icon(Icons.phone, color: Colors.black),
                   validator: (value) {

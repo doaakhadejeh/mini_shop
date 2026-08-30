@@ -11,7 +11,7 @@ class BodyDetailesCoffee extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final cubit = context.read<DetailesProductCubit>();
+    final cubit = context.watch<DetailesProductCubit>();
     return Padding(
       padding: EdgeInsets.symmetric(horizontal: 15.w),
       child: Row(

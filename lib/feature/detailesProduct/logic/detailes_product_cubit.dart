@@ -4,21 +4,25 @@ import 'package:mimi_shope/feature/detailesProduct/logic/detailes_product_state.
 class DetailesProductCubit extends Cubit<DetailesProductState> {
   DetailesProductCubit() : super(DetailesProductInitial());
 
-  int quantity = 1;
+  int get quantity {
+    if (state is DetailesProductUpdated) {
+      return (state as DetailesProductUpdated).quantity;
+    }
+
+    return 1;
+  }
 
   double getTotalPrice(double price) {
     return price * quantity;
   }
 
   void incrementQuantity() {
-    quantity++;
-    emit(DetailesProductUpdated());
+    emit(DetailesProductUpdated(quantity + 1));
   }
 
   void decrementQuantity() {
     if (quantity > 1) {
-      quantity--;
-      emit(DetailesProductUpdated());
+      emit(DetailesProductUpdated(quantity - 1));
     }
   }
 }

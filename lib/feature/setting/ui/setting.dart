@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:go_router/go_router.dart';
+import 'package:mimi_shope/core/helper/shared_pref.dart';
 import 'package:mimi_shope/core/routing/const_rout.dart';
 import 'package:mimi_shope/core/theme/theme_extention.dart';
 import 'package:mimi_shope/feature/auth/logic/auth_cubit.dart';
@@ -15,6 +16,7 @@ class SettingsPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final colors = Theme.of(context).extension<AppColors>()!;
+    goToInit() => context.go(ConstRouter.init);
 
     return Scaffold(
       appBar: AppBar(
@@ -54,8 +56,11 @@ class SettingsPage extends StatelessWidget {
             icon: Icons.logout_rounded,
             title: 'Logout',
             subtitle: 'Sign out from your account',
-            onTap: () {
-              context.read<AuthCubit>().logout();
+            onTap: () async {
+              await context.read<AuthCubit>().logout();
+              await SharedPrefHelper.clearAllData();
+              await SharedPrefHelper.clearAllSecuredData();
+              goToInit();
             },
             isDestructive: true,
           ),

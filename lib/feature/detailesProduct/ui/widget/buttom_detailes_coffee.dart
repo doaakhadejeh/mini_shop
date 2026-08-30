@@ -13,7 +13,7 @@ class BottomDetailsCoffee extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final cubit = context.read<DetailesProductCubit>();
+    final cubit = context.watch<DetailesProductCubit>();
 
     return Container(
       padding: EdgeInsets.symmetric(vertical: 16.h),

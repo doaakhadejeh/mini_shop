@@ -1,8 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:mimi_shope/feature/detailesProduct/logic/detailes_product_cubit.dart';
-import 'package:mimi_shope/feature/detailesProduct/logic/detailes_product_state.dart';
 import 'package:mimi_shope/feature/detailesProduct/ui/widget/body_detailes_coffee.dart';
 import 'package:mimi_shope/feature/detailesProduct/ui/widget/buttom_detailes_coffee.dart';
 import 'package:mimi_shope/feature/detailesProduct/ui/widget/top_detailes_coffee.dart';
@@ -36,33 +33,29 @@ class CoffeeDetailsScreen extends StatelessWidget {
         ),
         centerTitle: true,
       ),
-      body: BlocBuilder<DetailesProductCubit, DetailesProductState>(
-        builder: (context, state) {
-          return SafeArea(
-            child: Padding(
-              padding: EdgeInsets.symmetric(horizontal: 15.w, vertical: 6.h),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Expanded(
-                    child: SingleChildScrollView(
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          TopDetailesCoffee(item: item),
-                          SizedBox(height: 20.h),
-                          BodyDetailesCoffee(item: item),
-                        ],
-                      ),
-                    ),
+      body: SafeArea(
+        child: Padding(
+          padding: EdgeInsets.symmetric(horizontal: 15.w, vertical: 6.h),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Expanded(
+                child: SingleChildScrollView(
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      TopDetailesCoffee(item: item),
+                      SizedBox(height: 20.h),
+                      BodyDetailesCoffee(item: item),
+                    ],
                   ),
-
-                  BottomDetailsCoffee(product: item),
-                ],
+                ),
               ),
-            ),
-          );
-        },
+
+              BottomDetailsCoffee(product: item),
+            ],
+          ),
+        ),
       ),
     );
   }

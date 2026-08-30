@@ -100,7 +100,7 @@ final GoRouter router = GoRouter(
     GoRoute(
       path: ConstRouter.locationMap,
       builder: (BuildContext context, GoRouterState state) {
-        final location = state.extra as LocationModel;
+        final location = state.extra as LocationModel?;
         return LocationMap(location: location);
       },
     ),

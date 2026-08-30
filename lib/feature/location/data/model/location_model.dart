@@ -1,8 +1,8 @@
 import 'package:equatable/equatable.dart';
 
 class LocationModel extends Equatable {
-  final double latitude;
-  final double longitude;
+  final double? latitude;
+  final double? longitude;
   final String? address;
 
   const LocationModel({

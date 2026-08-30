@@ -5,7 +5,7 @@ import 'package:latlong2/latlong.dart';
 import 'package:mimi_shope/feature/location/data/model/location_model.dart';
 
 class LocationMap extends StatefulWidget {
-  final LocationModel location;
+  final LocationModel? location;
   const LocationMap({super.key, required this.location});
 
   @override
@@ -14,14 +14,18 @@ class LocationMap extends StatefulWidget {
 
 class _LocationMapState extends State<LocationMap> {
   late LatLng selectedLocation;
+  late double latitude;
+  late double longitude;
+  static const double defaultLat = 33.5138;
+  static const double defaultLng = 36.2765;
+
   @override
   void initState() {
     super.initState();
 
-    selectedLocation = LatLng(
-      widget.location.latitude,
-      widget.location.longitude,
-    );
+    latitude = widget.location?.latitude ?? defaultLat;
+    longitude = widget.location?.longitude ?? defaultLng;
+    selectedLocation = LatLng(latitude, longitude);
   }
 
   @override
@@ -41,10 +45,7 @@ class _LocationMapState extends State<LocationMap> {
       ),
       body: FlutterMap(
         options: MapOptions(
-          initialCenter: LatLng(
-            widget.location.latitude,
-            widget.location.longitude,
-          ),
+          initialCenter: LatLng(longitude, longitude),
           initialZoom: 15,
           onTap: (tapPosition, point) {
             setState(() {
