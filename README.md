@@ -97,7 +97,7 @@ A modern coffee shopping mobile application built with **Flutter** and **Firebas
 
 | Checkout - Dark | Checkout - Step 2 | Checkout - Light |
 | --------------- | ----------------- | ---------------- |
-| <img src='asset/image/Checkout1_n.png' width="220"/>  |<img src='asset/image/Checkout2_n.png' width="220"/>  | <img src='asset/image/Checkout1_l.png' width="220"/> |
+| <img src='asset/image/checkout1_n.png' width="220"/>  |<img src='asset/image/checkout2_n.png' width="220"/>  | <img src='asset/image/checkout1_l.png' width="220"/> |
 
 ### 💳 Payment
 
@@ -109,7 +109,7 @@ A modern coffee shopping mobile application built with **Flutter** and **Firebas
 
 | Location |
 | -------- |
-| <img src='asset/image/Location.png' width="220"/>  | 
+| <img src='asset/image/location.png' width="220"/>  | 
 
 ### 📦 Orders
 
