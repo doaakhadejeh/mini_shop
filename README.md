@@ -71,61 +71,59 @@ A modern coffee shopping mobile application built with **Flutter** and **Firebas
 
 | Email Login | Phone Login | Register   |
 | ----------- | ----------- | ---------- |
-| <img src="asset/image/login_email_l.png" width="220"/> | <img src='asset/image/login_phone_l.png' width="220"/>  | <img src='asset/image/register_l.png'width="220"/> |
+| <img src="asset/image/login_email_l.png" width="220"/> | <img src='asset/image/login_phone_l.png' width="220"/>  | <img src='asset/image/register_l.png' width="220"/> |
 
 ### 🏠 Home & Products
 
 | Home  - dark     |  Home - light      | 
 | ---------- |  ---------- | 
-| <img src='asset/image/home_n.png'width="220"/> |  <img src='asset/image/home_l.png'width="220"/> |
+| <img src='asset/image/home_n.png' width="220"/> |  <img src='asset/image/home_l.png 'width="220"/> |
 
 | Coffee Details | Search     |
 | -------------  | ---------- |
-| <img src='asset/image/detailes_l.png'width="220"/> | <img src='asset/image/search_l.png'width="220"/> |
+| <img src='asset/image/detailes_l.png' width="220"/> | <img src='asset/image/search_l.png 'width="220"/> |
 
 ### ❤️ Favorites
 
 | Favorites - Dark | Favorites - Light |
 | ---------------- | ----------------- |
-| <img src='asset/image/fav_n.png'width="220"/>  | <img src='asset/image/fav_l.png'width="220"/>  |
+| <img src='asset/image/fav_n.png' width="220"/>  | <img src='asset/image/fav_l.png' width="220"/>  |
 
 ### 🛒 Cart & Checkout
 
 | Cart - Dark | Cart - Light | Empty Cart |
 | ---------- |  ---------- | ---------- |
-| <img src='asset/image/cart_n.png'width="220"/>  | <img src='asset/image/cart_l.png'width="220"/>  | <img src='asset/image/cart_empty_n.png'width="220"/>  |
+| <img src='asset/image/cart_n.png' width="220"/>  | <img src='asset/image/cart_l.png' width="220"/>  | <img src='asset/image/cart_empty_n.png' width="220"/>  |
 
 | Checkout - Dark | Checkout - Step 2 | Checkout - Light |
 | --------------- | ----------------- | ---------------- |
-| <img src='asset/image/Checkout1_n.png'width="220"/>  |<img src='asset/image/Checkout2_n.png'width="220"/>  | <img src='asset/image/Checkout1_l.png' width="220"/> |
+| <img src='asset/image/Checkout1_n.png' width="220"/>  |<img src='asset/image/Checkout2_n.png' width="220"/>  | <img src='asset/image/Checkout1_l.png' width="220"/> |
 
 ### 💳 Payment
 
 | Payment - Dark | Payment - Light |
 | -------------- | --------------- |
-| <img src='asset/image/pilling_n.png'width="220"/>  |<img src='asset/image/pilling_l.png'width="220"/>  | 
+| <img src='asset/image/pilling_n.png' width="220"/>  |<img src='asset/image/pilling_l.png' width="220"/>  | 
 
 ### 📍 Location
 
 | Location |
 | -------- |
-| <img src='asset/image/Location.png'width="220"/>  | 
+| <img src='asset/image/Location.png' width="220"/>  | 
 
 ### 📦 Orders
 
 | Orders     | Order Details |
 | ---------- | ------------- |
-| <img src='asset/image/order_l.png'width="220"/>  | <img src='asset/image/order_det_l.png'width="220"/>     |
-| ---------- | ------------- |
-| <img src='asset/image/order_n.png'width="220"/>  | <img src='asset/image/order_det_n.png' width="220"/>    |
+| <img src='asset/image/order_l.png' width="220"/>  | <img src='asset/image/order_det_l.png' width="220"/>     |
+| <img src='asset/image/order_n.png' width="220"/>  | <img src='asset/image/order_det_n.png' width="220"/>    |
 
 ### ⚙️ Settings
 
 | Settings    | About Us   |
 | ---------- | ---------- |
-| <img src='asset/image/setting_l.png'width="220"/>   | <img src='asset/image/aboutus_l.png'width="220"/>  |
-| ---------- |---------- |
-|<img src='asset/image/setting_n.png'width="220"/>  | <img src='asset/image/aboutus_n.png'width="220"/>  |
+| <img src='asset/image/setting_l.png' width="220"/>   | <img src='asset/image/aboutus_l.png' width="220"/>  |
+|<img src='asset/image/setting_n.png' width="220"/>  | <img src='asset/image/aboutus_n.png' width="220"/>  |
 
 
 ---
